@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>zzc</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            width: 800px;
+            height: 600px;
+            margin: 50px auto;
+            position: relative;
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <button id="btn1">菜鸡模式(Z)</button>
+    <button id="btn2">高手模式(X)</button>
+    <button id="btn3">地狱模式(C)</button>
+    <button>神经病模式(V)</button>
+    <script src="zzc.js" type="text/javascript"></script>
+    <script src="food.js" type="text/javascript"></script>
+    <script src="snake.js" type="text/javascript"></script>
+    <script src="game.js" type="text/javascript"></script>
+    <script>
+        var box = document.getElementById('box');
+        var btn1 = document.getElementById('btn1');
+        var btn2 = document.getElementById('btn2');
+        var btn3 = document.getElementById('btn3');
+        var btns = document.getElementsByTagName("button");
+        console.log(btns);
+        var game = new Game({
+            id:box
+        });
+        function stop(){
+            for(var i=0;i<btns.length;i++) {
+                btns[i].disabled = true;
+            }
+        }
+        btn1.onclick = function(){
+            game.level = 250;
+            game.start();
+            stop();
+        }
+        btn2.onclick = function(){
+            game.level = 100;
+            game.start();
+            stop();
+        }
+        btn3.onclick = function(){
+            game.level = 50;
+            game.start();
+            stop();
+        }
+        btns[3].onclick = function(){
+            game.level = 10;
+            game.start();
+            stop();
+        }
+        document.onkeyup = function(e){
+            var e = e|| window.event;
+            switch(e.keyCode) {
+                case 90:
+                btn1.click();
+                break;
+                case 88:
+                btn2.click();
+                break;
+                case 67:
+                btn3.click();
+                break;
+                case 86:
+                btns[3].click();
+            }
+        }
+
+    </script>
+</body>
+</html>
